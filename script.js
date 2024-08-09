@@ -174,31 +174,26 @@ document.addEventListener("DOMContentLoaded", function() {
         clearFilterIcon.style.display = filterValue ? "block" : "none";
     });
 
-    document.getElementById("emergencyButton").addEventListener("click", function() {
-    const message = document.getElementById("emergencyMessage");
-    message.style.display = message.style.display === "none" ? "block" : "none"; // Alterna la visibilidad del mensaje
-});
+        // Borrar filtro al hacer clic en el ícono
+        clearFilterIcon.addEventListener("click", function() {
+            filterInput.value = ""; // Limpiar el campo de entrada
+            const rows = diagnosticList.getElementsByTagName("tr");
+    
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].style.display = ""; // Mostrar todas las filas
+            }
+    
+            clearFilterIcon.style.display = "none"; // Ocultar el ícono
+        });
+
+    
 
 
-
-    // Borrar filtro al hacer clic en el ícono
-    clearFilterIcon.addEventListener("click", function() {
-        filterInput.value = ""; // Limpiar el campo de entrada
-        const rows = diagnosticList.getElementsByTagName("tr");
-
-        for (let i = 0; i < rows.length; i++) {
-            rows[i].style.display = ""; // Mostrar todas las filas
-        }
-
-        clearFilterIcon.style.display = "none"; // Ocultar el ícono
-    });
 
     // Inicializar la tabla con todos los diagnósticos
     renderDiagnostics(diagnostics);
 
     
 });
-
-
 
 
